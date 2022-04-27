@@ -1,37 +1,47 @@
 const rpsArray = ["rock", "paper", "scissors"];
 let computerSelection;
-let userSelection;
-
+let playerSelection;
 
 function computerPlay()
-{
-    computerSelection = Math.floor(Math.random() * rpsArray.length);
-    console.log("computer has selected " + rpsArray[computerSelection])
+{    
+    computerNumber = Math.floor(Math.random() * rpsArray.length);
+    computerSelection = rpsArray[computerNumber];
+    return computerSelection
 }
 
-computerPlay()
-
-function playGame() {
-    userSelection = userSelection.toLowerCase();
-    if (rpsArray[computerSelection] == userSelection)
+function playGame(playerSelection, computerSelection)
+{
+    computerPlay()
+    computerSelection = rpsArray[computerNumber];
+    playerSelection = window.prompt("Enter rock, paper or scissors: ", "");
+    playerSelection = playerSelection.toLowerCase()
+    if (computerSelection == playerSelection)
     {
-        console.log("It's a tie!")
+        console.log(computerSelection + " == " + playerSelection)
+        return "It's a tie!";
     }
     else if 
     (
-        (rpsArray[computerSelection] == "rock" && userSelection == "scissors") ||
-        (rpsArray[computerSelection] == "scissors" && userSelection == "paper") ||
-        (rpsArray[computerSelection] == "paper" && userSelection == "rock")
+        (computerSelection == "rock" && playerSelection == "scissors") ||
+        (computerSelection == "scissors" && playerSelection == "paper") ||
+        (computerSelection == "paper" && playerSelection == "rock")
     )
     {
-        console.log("Computer wins!");
+        console.log("Computer wins! Computer selected: " + computerSelection)
+        return "Computer wins!";
     }
     else
     {
-        console.log("You win!")
+        console.log("You win! Computer selected: " + computerSelection)
+        return "You win!";
     }
 }
 
-userSelection = window.prompt("Enter rock, paper or scissors: ", "")
 
-playGame()
+function game()
+{
+    for (let i = 0; i < 5; i++){
+        playGame()
+    };
+}
+game()
