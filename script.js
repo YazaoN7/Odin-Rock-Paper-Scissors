@@ -1,7 +1,11 @@
 const rpsArray = ["rock", "paper", "scissors"];
 let computerSelection;
 let playerSelection;
+let playerScore = 0;
+let computerScore = 0;
 const buttonContainer = document.querySelector("#container");
+const resultDisplay = document.querySelector("#result");
+
 
 const playgamebutton = document.querySelector("#playgame");
 
@@ -29,7 +33,7 @@ const playGame = (playerSelection, computerSelection) =>
     
     if (computerSelection === playerSelection)
     {
-        console.log(computerSelection + " == " + playerSelection)
+        resultDisplay.innerHTML = "It's a tie!";
         return "It's a tie!";
     }
     else if 
@@ -39,12 +43,14 @@ const playGame = (playerSelection, computerSelection) =>
         (computerSelection === "paper" && playerSelection === "rock")
     )
     {
-        console.log("Computer wins! Computer selected: " + computerSelection + " You selected: " + playerSelection)
+        computerScore += 1;
+        resultDisplay.innerHTML = "Computer wins! Computer selected " + computerSelection + ". You selected " + playerSelection + ". Your score: " + playerScore + " Computer Score: " + computerScore;
         return "Computer wins!";
     }
     else
     {
-        console.log("You win! Computer selected: " + computerSelection + " You selected: " + playerSelection)
+        playerScore += 1;
+        resultDisplay.innerHTML = "You win! Computer selected " + computerSelection + ". You selected " + playerSelection + ". Your score: " + playerScore + " Computer score: " + computerScore;
         return "You win!";
     }
 }

@@ -1,3 +1,29 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: black;
+    color: rgb(0, 255, 0);
+}
+
+h1 {
+    text-align: center;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
 button {
-    size: 20px;
+    display: flex;
+    padding: 20px;
+    margin: 10px;
+    background-color: rgb(59, 59, 59);
+    color: rgb(0, 255, 0);
+}
+
+#result {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 20px;
 }
