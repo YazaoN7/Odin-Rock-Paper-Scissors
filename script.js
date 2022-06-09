@@ -1,47 +1,50 @@
 const rpsArray = ["rock", "paper", "scissors"];
 let computerSelection;
 let playerSelection;
+const buttonContainer = document.querySelector("#container");
 
+const playgamebutton = document.querySelector("#playgame");
+
+const handleClick = (e) => {
+    playGame(e.target.innerHTML, computerPlay)
+}
+rpsArray.forEach(member => {
+    const button = document.createElement("button")
+    button.innerHTML = member;
+    button.addEventListener("click", handleClick);
+    buttonContainer.appendChild(button);
+})
+
+// computer selects a random member of rpsArray
 function computerPlay()
 {    
-    computerNumber = Math.floor(Math.random() * rpsArray.length);
-    computerSelection = rpsArray[computerNumber];
-    return computerSelection
+    return computerNumber = Math.floor(Math.random() * rpsArray.length);
 }
 
-function playGame(playerSelection, computerSelection)
+// plays one round of-rock paper-scissors
+const playGame = (playerSelection, computerSelection) =>
 {
     computerPlay()
     computerSelection = rpsArray[computerNumber];
-    playerSelection = window.prompt("Enter rock, paper or scissors: ", "");
-    playerSelection = playerSelection.toLowerCase()
-    if (computerSelection == playerSelection)
+    
+    if (computerSelection === playerSelection)
     {
         console.log(computerSelection + " == " + playerSelection)
         return "It's a tie!";
     }
     else if 
     (
-        (computerSelection == "rock" && playerSelection == "scissors") ||
-        (computerSelection == "scissors" && playerSelection == "paper") ||
-        (computerSelection == "paper" && playerSelection == "rock")
+        (computerSelection === "rock" && playerSelection === "scissors") ||
+        (computerSelection === "scissors" && playerSelection === "paper") ||
+        (computerSelection === "paper" && playerSelection === "rock")
     )
     {
-        console.log("Computer wins! Computer selected: " + computerSelection)
+        console.log("Computer wins! Computer selected: " + computerSelection + " You selected: " + playerSelection)
         return "Computer wins!";
     }
     else
     {
-        console.log("You win! Computer selected: " + computerSelection)
+        console.log("You win! Computer selected: " + computerSelection + " You selected: " + playerSelection)
         return "You win!";
     }
 }
-
-
-function game()
-{
-    for (let i = 0; i < 5; i++){
-        playGame()
-    };
-}
-game()
